@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Rapid7. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface MetasploitSession : NSObject<NSURLConnectionDelegate>{
     NSURLConnection* _connection;
@@ -35,3 +35,4 @@
 - (BOOL)connection:(NSURLConnection *)connection canAuthenticateAgainstProtectionSpace:(NSURLProtectionSpace *)protectionSpace;
 
 @end
+

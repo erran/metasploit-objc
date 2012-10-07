@@ -6,7 +6,7 @@
 //  Copyright (c) 2012 Rapid7. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "MetasploitSession.h"
 
 @interface MetasploitManager : NSObject{
@@ -85,3 +85,4 @@
 -(NSDictionary*)ringRead:(NSString *)sessionID withReadPointer:(NSString*)readPointer;
 
 @end
+

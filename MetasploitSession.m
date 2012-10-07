@@ -1,6 +1,6 @@
 //
 //  MetasploitSession.m
-//  metasploit-objective-c
+//  Metasploit
 //
 //  Created by Erran Carey on 6/21/12.
 //  Copyright (c) 2012 Rapid7. All rights reserved.
@@ -88,3 +88,4 @@
 }
 
 @end
+
