@@ -6,9 +6,6 @@
 //  Copyright (c) 2012 Rapid7. All rights reserved.
 //
 
-// TODO: Add constants, and imports here.
-
-#import <UIKit/UIKit.h>
 #import "MetasploitSession.h"
 #import "MetasploitManager.h"
 #import "MetasploitProManager.h"
