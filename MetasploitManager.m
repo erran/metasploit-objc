@@ -1,9 +1,9 @@
 //
 //  MetasploitManager.m
-//  metasploit-objective-c
+//  Metasploit
 //
 //  Created by Erran Carey on 6/22/12.
-//  Copyright (c) 2012 App2O. All rights reserved.
+//  Copyright (c) 2012 Rapid7. All rights reserved.
 //
 
 #import "MetasploitManager.h"
