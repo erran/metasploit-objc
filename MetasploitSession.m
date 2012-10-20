@@ -3,7 +3,7 @@
 //  Metasploit
 //
 //  Created by Erran Carey on 6/21/12.
-//  Copyright (c) 2012 Rapid7. All rights reserved.
+//  Copyright (c) 2012 Erran Carey. All rights reserved.
 //
 
 #import "MetasploitSession.h"
@@ -28,35 +28,35 @@
 
 -(NSDictionary*)execute:(NSArray*)array{
     NSData* packed_array = [array messagePack];
-    
+
     NSMutableURLRequest* request = [[NSMutableURLRequest alloc]initWithURL:_host];
     [request setValue:@"binary/message-pack" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:packed_array];
-    
+
     _connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
     while(!_finished){
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
     }
     _finished = NO;
-    
+
     NSDictionary* dic = [receivedData messagePackParse];
-    
+
     //if([dic objectForKey:@"error"]){
         //NSString* error_message = [dic objectForKey:@"error_message"];
         //[NSException raise:@"Call failed" format:error_message];
     //}
-    
+
     if ([array containsObject:@"auth.login"] && [[dic objectForKey:@"result"] isEqualToString:@"success"]){
         _token = [dic objectForKey:@"token"];
     }
     //NSLog(@"%@",[receivedData messagePackParse]);
     if (![array containsObject:@"auth.login"]){
-        
+
          for(id key in [receivedData messagePackParse]){
             NSLog(@"%@: %@",key,[[receivedData messagePackParse]objectForKey:key]);   
         }
-        
+
     }
     return [receivedData messagePackParse];
 }
