@@ -18,11 +18,11 @@
 @property (strong, nonatomic) NSMutableData* receivedData;
 @property (strong, nonatomic) NSString* token;
 
--(id)initWithUsername:(NSString*)user andPassword:(NSString*)pass forHost:(NSURL*)host;
+- (id)initWithUsername:(NSString*)user andPassword:(NSString*)pass forHost:(NSURL*)host;
 
--(NSDictionary*)authenticate:(NSString*)user andPassword:(NSString*)pass;
+- (NSDictionary*)authenticate:(NSString*)user andPassword:(NSString*)pass;
 
--(NSDictionary*)execute:(NSArray*)args_array;
+- (NSDictionary*)execute:(NSArray*)args_array;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection;
 
