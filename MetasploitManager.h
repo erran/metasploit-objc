@@ -13,9 +13,10 @@
 {
 	MetasploitSession* _session;
 }
-- (id)initWithSession:(MetasploitSession*)session;
 
 @property (strong,nonatomic) MetasploitSession* session;
+
+- (id)initWithSession:(MetasploitSession*)session;
 
 //Core API
 - (NSDictionary*)addCoreModulePath:(NSString*)modulePath;

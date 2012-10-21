@@ -9,6 +9,7 @@
 #import "MetasploitManager.h"
 
 @interface MetasploitProManager : MetasploitManager
+
 //Pro General API
 - (NSDictionary*)about;
 - (NSDictionary*)workspaces;
