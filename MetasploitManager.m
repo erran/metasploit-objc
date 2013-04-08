@@ -8,9 +8,16 @@
 
 #import "MetasploitManager.h"
 
+/** A manager for Metasploit sessions */
 @implementation MetasploitManager
 @synthesize session = _session;
 
+/**
+ * Initialize the MetasploitManager with a given session.
+ *
+ * @param session The MetasploitSession
+ * @returns self
+ */
 - (id)initWithSession:(MetasploitSession*)session
 {
 	if (self = [super init])
@@ -20,49 +27,97 @@
 	return self;
 }
 
-//Console API
+/** @name Console API */
+
+/**
+ * Creates a new console.
+ *
+ * @return A NSDictionary representation of the output from the session.
+ */
 - (NSDictionary*)createConsole
 {
 	NSArray* array = [NSArray arrayWithObjects:@"console.create",_session.token,nil];
 	return [_session execute:array];
 }
 
+/**
+ * Closes a console.
+ *
+ * @param consoleID The console to destroy.
+ * @return A NSDictionary representation of the output from the session.
+ */
 - (NSDictionary*)destroyConsole:(NSString*)consoleID
 {
 	NSArray* array = [NSArray arrayWithObjects:@"console.destroy",_session.token,consoleID,nil];
 	return [_session execute:array];
 }
 
+/**
+ * Detaches a session from the console.
+ *
+ * @param consoleID The console to detach from.
+ * @return A NSDictionary representation of the output from the session.
+ */
 - (NSDictionary*)detachSessionFromConsole:(NSString*)consoleID
 {
 	NSArray* array = [NSArray arrayWithObjects:@"console.session_detach",_session.token,consoleID,nil];
 	return [_session execute:array];
 }
 
+/**
+ * Kills a session from the console.
+ *
+ * @param consoleID The console where the session should be killed.
+ * @return A NSDictionary representation of the output from the session.
+ */
 - (NSDictionary*)killSessionFromConsole:(NSString*)consoleID
 {
 	NSArray* array = [NSArray arrayWithObjects:@"console.session_kill",_session.token,consoleID,nil];
 	return [_session execute:array];
 }
 
+/*
+ * Lists the consoles available to the session.
+ *
+ * @return A NSDictionary representation of the output from the session.
+ */
 - (NSDictionary*)listConsoles
 {
 	NSArray* array = [NSArray arrayWithObjects:@"console.list",_session.token,nil];
 	return [_session execute:array];
 }
 
+/**
+ * Read from a given console.
+ *
+ * @param consoleID The console to read.
+ * @return A NSDictionary representation of the output from the session.
+ */
 - (NSDictionary*)readConsole:(NSString*)consoleID
 {
 	NSArray* array = [NSArray arrayWithObjects:@"console.read",_session.token,consoleID,nil];
 	return [_session execute:array];
 }
-
+/**
+ * Tabs the console.
+ *
+ * @param consoleID The console to tab.
+ * @param input The string to input into the console.
+ * @return A NSDictionary representation of the output from the session.
+ */
 - (NSDictionary*)tabConsole:(NSString*)consoleID input:(NSString*)input
 {
 	NSArray* array = [NSArray arrayWithObjects:@"console.tabs",_session.token,consoleID,[NSString stringWithFormat:@"%@\n",input],nil];
 	return [_session execute:array];
 }
 
+/**
+ * Write to a console.
+ *
+ * @param consoleID The console to write to.
+ * @param args A string of arguments to write to the console.
+ * @return A NSDictionary representation of the output from the session.
+ */
 - (NSDictionary*)writeToConsole:(NSString*)consoleID arguments:(NSString*)args
 {
 	NSArray* array = [NSArray arrayWithObjects:@"console.write",_session.token,consoleID,[NSString stringWithFormat:@"%@\n",args],nil];
